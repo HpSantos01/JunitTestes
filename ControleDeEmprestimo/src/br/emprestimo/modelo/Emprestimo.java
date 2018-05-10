@@ -26,7 +26,7 @@ public class Emprestimo {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.livro = livro;
+		this.usuario = usuario;
 	}
 
 	public String getDataEmprestimo() {

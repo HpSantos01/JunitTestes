@@ -71,7 +71,62 @@ public class UC01RegistraEmprestimoDeLivro {
 		emprestimo.setLivro(null);
 	}
 	
+	@Test
+	public void CT07QuandoUsuarioNuloErro(){
+		Usuario usuario = null;
+		Emprestimo umEmprestimo = new Emprestimo();
+		try{
+			umEmprestimo.setUsuario(usuario);
+			fail ("deveria falhar");
+		}catch(Exception e){
+			assertEquals("Usuario inválido", e.getMessage());
+		}
+	}
 	
+	@Test
+	public void CT08QuandoAdatadeEmprestimoForInvalidaErro() {
+		//cenario
+		String data = "30/02/2018";
+		Emprestimo umEmprestimo = new Emprestimo();
+		
+		//acao 
+		boolean resultadoObtido = umEmprestimo.validaData(data);
+		
+		//verificacao
+		assertFalse(resultadoObtido);
+		
+	}
+	
+	@Test
+	public void CT09QuandoAdatadeEmprestimoForInvalidaErro() {
+		//cenario
+		String data = "09-05-2018";
+		Emprestimo umEmprestimo = new Emprestimo();
+		
+		//acao 
+		boolean resultadoObtido = umEmprestimo.validaData(data);
+		
+		//verificacao
+		assertFalse(resultadoObtido);
+		
+	}
+	
+
+	@Test
+	public void CT10QuandoAdatadeEmprestimoForValidaErro() {
+		//cenario
+		String data = "09/05/2018";
+		Emprestimo umEmprestimo = new Emprestimo();
+		
+		//acao 
+		boolean resultadoObtido = umEmprestimo.validaData(data);
+		
+		//verificacao
+		assertTrue(resultadoObtido);
+		
+	}
+	
+
 	
 	
 	
